@@ -40,9 +40,9 @@ document.addEventListener(
       };
 
       navigator.mediaDevices
-        .getUserMedia({ 
-          audio: true, 
-          video: false 
+        .getUserMedia({
+          audio: true,
+          video: false
         })
         .then(handleSuccess);
     }
