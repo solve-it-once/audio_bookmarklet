@@ -9,9 +9,7 @@ var fileInputs = document.querySelectorAll('input[type="file"]');
 
 Array.prototype.forEach.call(fileInputs, (elem) => {
   elem.setAttribute('capture', '');
-  elem.insertAdjacentElement("beforeBegin", `
-    <audio id="${elem.name}-player" controls></audio>
-  `);
+  elem.insertAdjacentElement('afterend', `<audio id="${elem.name}-player" controls></audio>`);
   elem.addEventListener('change', function(e) {
     const file = e.target.files[0];
     const url = URL.createObjectURL(file);
