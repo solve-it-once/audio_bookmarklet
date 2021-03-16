@@ -3,7 +3,7 @@
  * Styles for the file widget's audio recorder.
  */
 
-.recorder--container {
+fieldset.recorder--container {
   border: 1px solid #ddd;
   padding: 10px;
 }
