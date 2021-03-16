@@ -2,3 +2,24 @@
  * @file
  * Styles for the file widget's audio recorder.
  */
+
+.recorder--container {
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+.recorder-container small {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.recordAudio {
+  background-color: #595d64;
+  border: 1px solid;
+  border-radius: 0;
+  color: #fff;
+  display: inline-block;
+  margin: 0 10px 0 0;
+  padding: 10px 10px;
+  vertical-align: 1.5em;
+}
