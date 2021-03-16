@@ -71,9 +71,10 @@ var timePad = function(val) {
 /**
  * Begin a MediaRecorder recording.
  */
-async function startRecording() {
+async function startRecording(elem) {
   // Prompt user to give microphone permissions.
   if (!gotUserMedia) {
+    elem.innerText = 'Authorize microphone';
     const stream = await navigator.mediaDevices
       .getUserMedia({
         audio: true,
@@ -83,6 +84,7 @@ async function startRecording() {
   }
 
   // Begin recording stream to blobs.
+  elem.innerText = newStop + ' (00:00)';
   mediaRecorder = new MediaRecorder(window.stream, {
     mimeType: 'audio/webm'
   });
@@ -99,6 +101,18 @@ async function startRecording() {
     currentElem.dispatchEvent(new Event('change'));
   };
   mediaRecorder.start();
+
+  // Improve button UX with a count-up timer.
+  counterSeconds = 0;
+  counter = setInterval(function(elem){
+    counterSeconds++;
+    var out = '';
+
+    // Format the number of seconds into common mm:ss format.
+    out = timePad(parseInt(counterSeconds/60)) + ':' + timePad(counterSeconds%60);
+
+    elem.innerText = newStop + ' (' + out + ')';
+  }, 1000, elem);
 }
 
 /* Use event delegation for any dynamically-added events. */
@@ -114,20 +128,7 @@ document.addEventListener(
       // Button is stateful. First do ops based on state.
       if (elem.innerText === recordLabel) {
         recordedBlobs = [];
-        elem.innerText = newStop + ' (00:00)';
-        startRecording();
-
-        // Improve button UX with a count-up timer.
-        counterSeconds = 0;
-        counter = setInterval(function(elem){
-          counterSeconds++;
-          var out = '';
-
-          // Format the number of seconds into common mm:ss format.
-          out = timePad(parseInt(counterSeconds/60)) + ':' + timePad(counterSeconds%60);
-
-          elem.innerText = newStop + ' (' + out + ')';
-        }, 1000, elem);
+        startRecording(elem);
       }
       else {
         clearInterval(counter);
