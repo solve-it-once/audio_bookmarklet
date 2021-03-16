@@ -25,7 +25,7 @@ Array.prototype.forEach.call(fileInputs, (elem) => {
   // Add a player to interact with the uploaded/captured audio.
   elem.insertAdjacentHTML('beforebegin', `
     <fieldset class="recorder--container">
-      <legend>Recorder/Player</legend>
+      <legend>Recorder/Player (Optional)</legend>
       <small>
         Press the "Record new" button to start a recording. Press the button again 
         to stop. The recording will enter the "Choose File" field automatically 
