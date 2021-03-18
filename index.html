@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DEMO | Audio recorder for file inputs</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="audio.css" />
+  </head>
+  <body class="html">
+    <form method="post" accept-charset="UTF-8" novalidate enctype="multipart/form-data">
+      <div class="form-field form-field--email">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" />
+      </div>
+
+      <div id="fileUpload" class="form-field form-field--file">
+        <label for="file">Upload Audio File (100 MB Maximum)</label>
+        <input id="file" name="file" type="file">
+      </div>
+    </form>
+    <script type="text/javascript" src="audio.js"></script>
+  </body>
+</html>
